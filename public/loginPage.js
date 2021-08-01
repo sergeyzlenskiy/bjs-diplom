@@ -9,6 +9,8 @@ user.loginFormCallback = function (data) {
         console.log(response);
         if (response.success) {
             location.reload();
+        } else {
+            user.setLoginErrorMessage('Ошибка! Данного пользователя  не существует.');
         }
     });
 };
@@ -19,6 +21,8 @@ user.registerFormCallback = function (data) {
         console.log(response);
         if (response.success) {
             location.reload();
+        } else {
+            user.setRegisterErrorMessage('Ошибка! Невозможно зарегестрировать пользователя с такими данными.');
         }
     });
 };

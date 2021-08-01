@@ -38,10 +38,9 @@ moneyManager.addMoneyCallback = function (data) {
         if (response.success) {
             console.log(response);
             ProfileWidget.showProfile(response.data);
-            moneyManager.setMessage('isSuccess', "Получилось!");
-        } else {
-            moneyManager.setMessage('', 'Не получилось, попробуйте еще раз.');
+            
         }
+        response.success ? moneyManager.setMessage(true, "Получилось, Ваш счет пополнен!") : moneyManager.setMessage(false , 'Невозможно выполнить отрицательный перевод.');
     });
 };
 
@@ -50,10 +49,9 @@ moneyManager.conversionMoneyCallback = function (data) {
         if (response.success) {
             console.log(response);
             ProfileWidget.showProfile(response.data);
-            moneyManager.setMessage('isSuccess', "Получилось!");
-        } else {
-            moneyManager.setMessage('', 'Не получилось, попробуйте еще раз.');
         }
+            response.success ? moneyManager.setMessage(true, "Конвертация прошла успешно!") : moneyManager.setMessage(false, 'Невозможно конвертировать данные значения.');
+        
     });
 };
 
@@ -62,10 +60,9 @@ moneyManager.sendMoneyCallback = function (data) {
         if (response.success) {
             console.log(response);
             ProfileWidget.showProfile(response.data);
-            moneyManager.setMessage('isSuccess', "Получилось!");
-        } else {
-            moneyManager.setMessage('', 'Не получилось, попробуйте еще раз.');
         }
+            response.success ? moneyManager.setMessage(true, "Получилось, деньги переведены!") : moneyManager.setMessage(false, 'Невозможно перевести отрицательную сумму.');
+        
     });
 };
 
@@ -86,10 +83,9 @@ favs.addUserCallback = function (data) {
             favs.clearTable();
             favs.fillTable(response.data);
             moneyManager.updateUsersList(response.data);
-            moneyManager.setMessage('isSuccess', "Получилось, пользователь добавлен в список избранных!");
-        } else {
-            moneyManager.setMessage('', 'Не получилось, попробуйте еще раз.');
         }
+            response.success ? moneyManager.setMessage(true, "Получилось, пользователь добавлен в список избранных!") : moneyManager.setMessage(false, 'Не получилось, такой ID уже существует. Проверьте правильность введенных данных и попробуйте еще раз.');
+        
     });
 };
 
@@ -99,10 +95,9 @@ favs.removeUserCallback = function (data) {
             favs.clearTable();
             favs.fillTable(response.data);
             moneyManager.updateUsersList(response.data);
-            moneyManager.setMessage('isSuccess', "Получилось, пользователь удален из избранного.");
-        } else {
-            moneyManager.setMessage('', 'Не получилось, попробуйте еще раз.');
         }
+            response.success ? moneyManager.setMessage('isSuccess', "Получилось, пользователь удален из избранного.") : moneyManager.setMessage('', 'Не получилось, проверьте правильность ваших действий и попробуйте еще раз.');
+        
     });
 };
 
